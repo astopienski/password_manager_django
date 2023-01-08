@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<br>
+<div class="container-fluid">
+  <p class="lead">
+      <b>Neues Passwort erstellen</b>
+  </p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <form action="create-new-password/create-pw-record" method="POST">
+        {% csrf_token %}
+        <div class="mb-3" style="width: 30%; margin: 10px">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="erforderlich" required>
+        </div>
+        <div class="mb-3" style="width: 30%; margin: 10px">
+            <label for="pw" class="form-label">Passwort:</label>
+            <input type="text" class="form-control" id="pw" name="pw" placeholder="erforderlich" required>
+        </div>
+        <div class="mb-3" style="width: 30%; margin: 10px">
+            <label for="link" class="form-label">Link:</label>
+            <input type="text" class="form-control" id="link" name="link" placeholder="erforderlich" required>
+        </div>
+        <div class="mb-3" style="width: 30%; margin: 10px">
+            <label for="note" class="form-label">Bemerkung:</label>
+            <input type="text" class="form-control" id="note" name="note">
+        </div>
+        <input type="submit" class="btn btn-success" value="Speichern">
+    </form>
+</div>
+{% endblock %}

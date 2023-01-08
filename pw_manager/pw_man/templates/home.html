@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<br>
+{% if user.is_authenticated %}
+<div class="container-fluid">
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <a href="{% url 'create_db' %}" class="btn btn-success">Neue Passwortdatenbank erstellen</a>
+        <a href="{% url 'show_dbs' %}" class="btn btn-success">Meine Passwortdatenbanken</a>
+    </div>
+</div>
+{% else %}
+<div class="container-fluid">
+    <p class="lead">
+        Bitte melden Sie sich an
+    </p>
+</div>
+{% endif %}
+
+{% endblock %}

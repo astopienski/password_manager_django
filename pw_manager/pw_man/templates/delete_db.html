@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<br>
+<div class="container-fluid">
+  <p class="lead">
+      <b>Datenbank löschen</b>
+  </p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="container-fluid">
+        <b>Sie versuchen, folgende Datenbank zu löschen:</b>
+    </div>
+    <br>
+    <table id="db" class="table table-bordered">
+        <tr class="header">
+            <th>Nr</th>
+            <th>Name der Datenbank</th>
+        </tr>
+        <tr>
+            <td>{{ db.db_id }}</td>
+            <td>{{ db.db_name }}</td>
+        </tr>
+    </table>
+    <div class="container-fluid">
+        <b>Sind Sie sicher?</b>
+    </div>
+    <br>
+    <form action="delete-db/delete-db-record" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-secondary" name="back">Nein</button>
+        <button type="submit" class="btn btn-danger" name="delete_db">Ja, löschen</button>
+    </form>
+</div>
+{% endblock %}

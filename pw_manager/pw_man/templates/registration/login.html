@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<br>
+<div class="container-fluid">
+  <p class="lead">
+    <b>Anmeldung</b>
+  </p>
+</div>
+{% endblock %}
+{% block content %}
+
+<form method="post">
+  {% csrf_token %}
+  <div class="container-fluid">
+    {{ form.as_p }}
+  </div>
+  <div class="container-fluid">
+    <button class="btn btn-success" type="submit">Anmelden</button>
+  </div>
+</form>
+
+<br>
+<div class="container-fluid">
+  <p class="lead">
+    <b>Noch nicht registriert?</b>
+  </p>
+</div>
+<div class="container-fluid">
+    <a href="{% url 'signup' %}" class="btn btn-secondary">Registrieren</a>
+</div>
+
+{% endblock %}

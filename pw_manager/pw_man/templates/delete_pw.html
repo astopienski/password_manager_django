@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<br>
+<div class="container-fluid">
+  <p class="lead">
+      <b>Passwort löschen</b>
+  </p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="container-fluid">
+        <b>Sie versuchen, folgendes Passwort zu löschen:</b>
+    </div>
+    <br>
+    <table id="all_dbs" class="table table-bordered">
+        <tr class="header">
+            <th>Nr</th>
+            <th>Username</th>
+            <th>Passwort</th>
+            <th>Link</th>
+            <th>Bemerkung</th>
+        </tr>
+        <tr>
+            <td>{{ pswd.pw_id }}</td>
+            <td>{{ pswd.pw_username }}</td>
+            <td>{{ pswd.pw_password }}</td>
+            <td>{{ pswd.pw_link }}</td>
+            <td>{{ pswd.pw_note }}</td>
+        </tr>
+    </table>
+    <div class="container-fluid">
+        <b>Sind Sie sicher?</b>
+    </div>
+    <br>
+    <form action="delete-pw-record/{{ pswd.pw_id }}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-secondary" name="back">Nein</button>
+        <button type="submit" class="btn btn-danger" name="delete_pw">Ja, löschen</button>
+    </form>
+</div>
+{% endblock %}

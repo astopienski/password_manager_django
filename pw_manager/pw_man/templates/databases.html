@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<br>
+<div class="container-fluid">
+  <p class="lead">
+      <b>Meine Passwortdatenbanken</b>
+  </p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="container-fluid">
+        <a href="{% url 'create_db' %}" class="btn btn-success">Neue Datenbank erstellen</a>
+    </div>
+    <br>
+    <input class="form-control me-2" type="search" id="search" onkeyup="dbsTableFilter()" name="search" placeholder="Search..." style="width: 90%; margin-left: 10px;" autofocus/>
+    <br>
+    <table id="all_dbs" class="table table-bordered">
+        <tr class="header">
+            <th>Nr</th>
+            <th>Name der Datenbank</th>
+            <th>Datenbank ändern</th>
+            <th>Passwörter verwalten</th>
+            <th>Datenbank löschen</th>
+        </tr>
+        {% for x in dbs %}
+        <tr>
+            <td>{{ x.db_id }}</td>
+            <td>{{ x.db_name }}</td>
+            <td><a href="/show-databases/{{ x.db_id }}/update-db" class="btn btn-success">Ändern</a></td>
+            <td><a href="/show-databases/{{ x.db_id }}/show-passwords" class="btn btn-success">Verwalten</a></td>
+            <td><a href="/show-databases/{{ x.db_id }}/delete-db" class="btn btn-danger">Löschen</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<br>
+<div class="container-fluid">
+  <p class="lead">
+      <b>Datenbank ändern</b>
+  </p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <form action="update-db/update-db-record" method="POST">
+        {% csrf_token %}
+        <div class="mb-3" style="width: 30%; margin: 10px">
+            <label for="db_name" class="form-label">Neuer Name der Datenbank:</label>
+            <input type="text" class="form-control" id="db_name" name="db_name" value="{{ db.db_name }}">
+        </div>
+        <input type="submit" class="btn btn-success" value="Speichern">
+    </form>
+</div>
+{% endblock %}

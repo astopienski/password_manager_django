@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<br>
+<div class="container-fluid">
+  <p class="lead">
+      <b>Passwort ändern</b>
+  </p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <form action="update-pw-record/{{ pswd.pw_id }}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3" style="width: 30%; margin: 10px">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" value="{{ pswd.pw_username }}">
+        </div>
+        <div class="mb-3" style="width: 30%; margin: 10px">
+            <label for="pw" class="form-label">Passwort:</label>
+            <input type="text" class="form-control" id="pw" name="pw" value="{{ pswd.pw_password }}">
+        </div>
+        <div class="mb-3" style="width: 30%; margin: 10px">
+            <label for="link" class="form-label">Link:</label>
+            <input type="text" class="form-control" id="link" name="link" value="{{ pswd.pw_link }}">
+        </div>
+        <div class="mb-3" style="width: 30%; margin: 10px">
+            <label for="note" class="form-label">Bemerkung:</label>
+            <input type="text" class="form-control" id="note" name="note" value="{{ pswd.pw_note }}">
+        </div>
+        <input type="submit" class="btn btn-success" value="Speichern">
+    </form>
+</div>
+{% endblock %}
